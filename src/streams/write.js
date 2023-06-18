@@ -1,5 +1,9 @@
+import {createWriteStream} from 'node:fs'
+import {stdin} from 'node:process'
+
+
 const write = async () => {
-    // Write your code here 
+    stdin.pipe(createWriteStream('files/fileToWrite.txt'))
 };
 
 await write();

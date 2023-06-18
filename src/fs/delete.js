@@ -1,5 +1,11 @@
+import {rm} from 'node:fs/promises'
+
 const remove = async () => {
-    // Write your code here 
+    try {
+        await rm('fileToRemove.txt')
+    } catch (error) {
+        console.error('FS operation failed')
+    }
 };
 
 await remove();
