@@ -3,10 +3,7 @@ import { createHash } from "node:crypto";
 import { createAbsolutePath } from "../utils/createAbsolutePath.js";
 
 const calculateHash = async () => {
-  const source = createAbsolutePath(
-    import.meta.url,
-    "files/fileToCalculateHashFor.txt"
-  );
+  const source = createAbsolutePath(import.meta.url, "files/fileToCalculateHashFor.txt");
 
   try {
     const file = await readFile(source);

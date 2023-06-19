@@ -5,10 +5,7 @@ import { createAbsolutePath } from "../utils/createAbsolutePath.js";
 
 const decompress = async () => {
   const source = createAbsolutePath(import.meta.url, "files/archive.txt.gz");
-  const destination = createAbsolutePath(
-    import.meta.url,
-    "files/fileToCompress.txt"
-  );
+  const destination = createAbsolutePath(import.meta.url, "files/fileToCompress.txt");
 
   const input = createReadStream(source);
   const output = createWriteStream(destination);

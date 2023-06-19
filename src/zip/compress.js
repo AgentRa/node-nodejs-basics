@@ -5,14 +5,8 @@ import { promisify } from "node:util";
 import { createAbsolutePath } from "../utils/createAbsolutePath.js";
 
 const compress = async () => {
-  const source = createAbsolutePath(
-    import.meta.url,
-    "files/fileToCompress.txt"
-  );
-  const destination = createAbsolutePath(
-    import.meta.url,
-    "files/archive.txt.gz"
-  );
+  const source = createAbsolutePath(import.meta.url, "files/fileToCompress.txt");
+  const destination = createAbsolutePath(import.meta.url, "files/archive.txt.gz");
 
   const input = createReadStream(source);
   const output = createWriteStream(destination);

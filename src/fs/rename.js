@@ -12,10 +12,7 @@ const isAlreadyExistException = async (filepath) => {
 
 const rename = async () => {
   const source = createAbsolutePath(import.meta.url, "files/wrongFilename.txt");
-  const destination = createAbsolutePath(
-    import.meta.url,
-    "files/properFilename.md"
-  );
+  const destination = createAbsolutePath(import.meta.url, "files/properFilename.md");
 
   const condition = await isAlreadyExistException(destination);
   if (condition) throw new Error("FS operation failed");
