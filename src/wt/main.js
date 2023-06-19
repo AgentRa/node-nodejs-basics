@@ -13,7 +13,17 @@ const performCalculations = async () => {
     });
     workerPromises.push(workerPromise);
   }
-  console.log(await Promise.all(workerPromises));
+
+  const workersData = (await Promise.allSettled(workerPromises)).map((worker) =>
+    worker.status === "fulfilled"
+      ? {
+          status: "resolved",
+          data: worker.value.data,
+        }
+      : { status: "error", data: null }
+  );
+
+  console.log(workersData);
 };
 
 await performCalculations();
