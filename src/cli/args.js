@@ -1,13 +1,13 @@
 import {argv} from 'node:process'
 
+const args = argv.slice(2)
+
 const parseArgs = () => {
-    const output = argv.reduce((acc, input, currentIndex) => {
-        if (currentIndex < 2) return acc;
-        if (currentIndex + 1 === argv.length) return acc + " is " + input;
+    const output = args.reduce((acc, input, currentIndex) => {
         if (currentIndex % 2) return acc + " is " + input + ", ";
         return acc + input.slice(2);
     }, "")
-    console.log(output)
+    console.log(output.slice(0, -2))
 };
 
 parseArgs();
