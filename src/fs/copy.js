@@ -1,15 +1,20 @@
 import {readdir, copyFile, mkdir} from 'node:fs/promises'
+import {resolve, dirname, sep} from "node:path";
+import {fileURLToPath} from "node:url";
 
+const __filename = fileURLToPath(import.meta.url);
+const source = resolve(dirname(__filename), "./files") + sep;
+const destination = resolve(dirname(__filename), "./files_copy") + sep;
 
 const copy = async () => {
     try {
-        const files = await readdir('files/');
-        await mkdir('files_copy')
+        const files = await readdir(source);
+        await mkdir(destination);
         for (let file of files) {
-            copyFile(`files/${file}`, `files_copy/${file}`)
+            copyFile(source + file, destination + file)
         }
     } catch (error) {
-        console.error('FS operation failed')
+        throw new Error('FS operation failed')
     }
 };
 
