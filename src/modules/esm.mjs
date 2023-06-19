@@ -1,7 +1,7 @@
-import {sep, dirname} from 'path'
-import {release, version} from 'os'
-import {createServer as createServerHttp} from 'http'
-import {fileURLToPath} from 'url';
+import {sep, dirname} from 'node:path'
+import {release, version} from 'node:os'
+import {createServer as createServerHttp} from 'node:http'
+import {fileURLToPath} from 'node:url';
 import './files/c.js';
 import * as a from './files/a.json' assert {type: "json"};
 import * as b from './files/a.json' assert {type: "json"};
