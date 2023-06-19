@@ -1,11 +1,9 @@
 import {readFile} from 'node:fs/promises';
-import {resolve, dirname} from "node:path";
-import {fileURLToPath} from "node:url";
-
-const __filename = fileURLToPath(import.meta.url);
-const source = resolve(dirname(__filename), "./files/fileToRead.txt");
+import {createAbsolutePath} from "../utils/createAbsolutePath.js";
 
 const read = async () => {
+    const source = createAbsolutePath(import.meta.url, "files/fileToRead.txt");
+
     try {
         console.log(await readFile(source, {encoding: 'utf-8'}))
     } catch (error) {

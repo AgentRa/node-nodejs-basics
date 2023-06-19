@@ -1,12 +1,11 @@
 import {createReadStream} from 'node:fs'
 import {stdout} from 'node:process'
-import {resolve, dirname} from "node:path";
-import {fileURLToPath} from "node:url";
+import {createAbsolutePath} from "../utils/createAbsolutePath.js";
 
-const __filename = fileURLToPath(import.meta.url);
-const source = resolve(dirname(__filename), "./files/fileToRead.txt");
 
 const read = async () => {
+    const source = createAbsolutePath(import.meta.url, "./files/fileToRead.txt")
+
     createReadStream(source).pipe(stdout);
 };
 

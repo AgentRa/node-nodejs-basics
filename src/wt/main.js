@@ -1,12 +1,9 @@
 import {Worker} from 'node:worker_threads'
-import {resolve, dirname} from "node:path";
-import {fileURLToPath} from "node:url";
-
-const __filename = fileURLToPath(import.meta.url);
-const source = resolve(dirname(__filename), "./worker.js");
+import {createAbsolutePath} from "../utils/createAbsolutePath.js";
 
 const performCalculations = async () => {
     const workerPromises = [];
+    const source = createAbsolutePath(import.meta.url, "worker.js");
 
     for (let i = 0; i < 4; i++) {
         const workerPromise = new Promise((resolve, reject) => {

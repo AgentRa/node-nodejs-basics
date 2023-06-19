@@ -1,11 +1,9 @@
 import {writeFile} from 'node:fs/promises'
-import {fileURLToPath} from "node:url";
-import {resolve, dirname} from "node:path";
-
-const __filename = fileURLToPath(import.meta.url);
-const destination = resolve(dirname(__filename), "./files/fresh.txt");
+import {createAbsolutePath} from "../utils/createAbsolutePath.js";
 
 const create = async () => {
+    const destination = createAbsolutePath(import.meta.url, "files/fresh.txt");
+
     try {
         await writeFile(destination, 'I am fresh and young', {flag: "wx"})
     } catch (error) {

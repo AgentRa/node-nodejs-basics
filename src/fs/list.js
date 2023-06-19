@@ -1,13 +1,11 @@
 import {readdir} from 'node:fs/promises'
-import {resolve, dirname, sep} from "node:path";
-import {fileURLToPath} from "node:url";
-
-const __filename = fileURLToPath(import.meta.url);
-const source = resolve(dirname(__filename), "./files") + sep;
+import {createAbsolutePath} from "../utils/createAbsolutePath.js";
 
 const list = async () => {
+    const source = createAbsolutePath(import.meta.url, "files");
+
     try {
-        console.log('files', await readdir(source))
+        console.log('files: ', await readdir(source))
     } catch (error) {
         throw new Error('FS operation failed')
     }

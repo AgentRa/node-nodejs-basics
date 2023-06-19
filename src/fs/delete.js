@@ -1,11 +1,10 @@
 import {rm} from 'node:fs/promises'
-import {resolve, dirname} from "node:path";
-import {fileURLToPath} from "node:url";
+import {createAbsolutePath} from "../utils/createAbsolutePath.js";
 
-const __filename = fileURLToPath(import.meta.url);
-const destination = resolve(dirname(__filename), "./files/fileToRemove.txt");
 
 const remove = async () => {
+    const destination = createAbsolutePath(import.meta.url, "files/fileToRemove.txt");
+
     try {
         await rm(destination)
     } catch (error) {
