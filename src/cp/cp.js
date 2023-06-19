@@ -1,7 +1,7 @@
 import {spawn} from 'node:child_process'
 import {createAbsolutePath} from "../utils/createAbsolutePath.js";
 
-const source = createAbsolutePath("cp/files/script.js");
+const source = createAbsolutePath(import.meta.url, "files/script.js");
 
 const spawnChildProcess = async (args) => spawn(`node`, [source, ...args])
     .stdout.on('data', data => console.log('stdout: ' + data))
